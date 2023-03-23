@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task1-2</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div>
+    <span>Добавление элемента:</span>
+    <input type="text" id="newItem">
+    <button onclick="addToList()" class="addButton">Добавить</button>
+  </div>
+
+  <div id="filterContainer">
+    <span>Фильтрация списка:</span>
+    <input type="text" id="filterInput" placeholder="Введите текст для фильтрации">
+    <button onclick="filterList()">Фильтр</button>
+    <button onclick="filterClean()">Отчистить фильтр</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+body {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin-bottom: 10px;
+}
+
+.currentForm {
+  display: flex;
+  flex-direction: column;
+}
