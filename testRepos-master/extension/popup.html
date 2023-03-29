@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>EXCEED RECRUITING</title>
+  <script src="js/popup/Router.js"></script>
+  <script src="js/popup/Candidate.js"></script>
+  <script src="js/popup/loginPage.js"></script>
+  <script src="js/popup/homePage.js"></script>
+  <script src="js/popup.js"></script>
+  <link rel="stylesheet" href="./styles/popup.css">
+</head>
+<body>
+<div id="loginBlock" class="login-block hide-element">
+  <h1 class="header">Рекрутинг</h1>
+  <input id="loginInput" type="email" placeholder="Логин">
+  <input id="passInput" type="password" placeholder="Пароль">
+  <button class="btn-action" id="signIn">Войти</button>
+</div>
+<!--<div id="loggedBlock" >-->
+<div id="loggedBlock" class="hide-element">
+  <h1 class="header">Рекрутeр
+    <button class="btn-action" id="signOut">&#10162;</button>
+  </h1>
+  <div id="hrName"></div>
+  <div id="candidateName" class="hide-element"></div>
+  <button id="markAsCandidateBtn">Сохранить кандидата</button>
+  <input type="datetime-local" id="interview-date" name="interviewDate" class="hide-element">
+  <label for="interview-date">Дата собеседования</label>
+  <input type="date" id="may-write-date" class="hide-element"  name="mayWriteAfter">
+  <label for="may-write-date" >Можно написать после</label>
+  <input type="checkbox" id="not-write-again" class="hide-element" name="noWriteAgain">
+  <label for="not-write-again">Больше не писать</label>
+  <div id="workGroups">
+  </div>
+</div>
+</body>
+</html>

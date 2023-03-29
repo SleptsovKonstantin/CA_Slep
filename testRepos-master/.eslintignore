@@ -1,0 +1,12 @@
+.tmp
+.sass-cache
+.publish
+coverage/
+dist/
+build/*
+node_modules/
+webpack.stats.json
+extension
+webStorm.config.js
+build
+staff_igor
