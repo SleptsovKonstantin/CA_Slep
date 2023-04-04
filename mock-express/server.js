@@ -19,19 +19,19 @@ const resultData = [
   {
     id: 3,
     item: 'Продал подкрадули',
-    sum: -1230
+    sum: 1230
   },
 ];
 
 app.get('/api/getItem', (req, res) => {
   console.log('/api/getItem');
-  res.send(resultData);
+  setTimeout(() => res.send(resultData), 3000)
 });
 
 app.post('/api/addItem', (req, res) => {
   console.log('/api/addItem');
   resultData.push(req.body)
-  res.send(resultData);
+  setTimeout(() => res.send(resultData), 3000)
 });
 
 app.patch('/api/updateItem', (req, res) => {
@@ -39,7 +39,7 @@ app.patch('/api/updateItem', (req, res) => {
   const {id, text } = req.body
   const index = resultData.findIndex(el => el.id === id);
   resultData[index].item = text
-  res.send(resultData);
+  setTimeout(() => res.send(resultData), 3000)
 })
 
 app.delete('/api/deleteItem', (req, res) => {
@@ -47,7 +47,7 @@ app.delete('/api/deleteItem', (req, res) => {
   const id = req.query.id;
   const index = resultData.findIndex(el => el.id === id);
   resultData.splice(index, 1);
-  res.send(resultData);
+  setTimeout(() => res.send(resultData), 3000)
 })
 
 const port = 3000;
