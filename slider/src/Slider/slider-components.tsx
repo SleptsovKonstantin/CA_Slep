@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import {
   goToNext,
   goToPrev,
@@ -8,15 +7,15 @@ import {
   setNavsVisible,
   setIsLoop,
 } from "./slider-reducer";
+import { useAppDispatch, useAppSelector } from "../hooks/useTypedSelectorAndDispatch";
 
 import "./slider.style.css";
 
 const Slider = () => {
-  const { currentIndex, images, isPags, isNavs, isLoop } = useSelector(
+  const dispatch = useAppDispatch();
+  const { currentIndex, images, isPags, isNavs, isLoop } = useAppSelector(
     (state: any) => state.slider
   );
-
-  const dispatch = useDispatch();
 
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
   const [isDelayMs, setIsDelayMs] = useState<number>(0);
@@ -45,7 +44,7 @@ const Slider = () => {
     dispatch(setNavsVisible());
   };
 
-  const handleDelay = (e: any) => {
+  const handleDelay = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsDelayMs(Number(e.target.value));
   };
 
@@ -74,7 +73,7 @@ const Slider = () => {
 
   useEffect(() => {
     let ms = isDelayMs;
-    
+
     if (isDelayMs === 0) {
       ms = 5000;
     }
