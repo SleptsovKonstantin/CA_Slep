@@ -1,63 +1,62 @@
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  goToNext,
-  goToPrev,
-  setCurrentPage,
-  setPagsVisible,
-  setNavsVisible,
-  setIsLoop,
-} from "./slider-reducer";
-import { useAppDispatch, useAppSelector } from "../hooks/useTypedSelectorAndDispatch";
+import React, { memo, useCallback, useEffect, useState } from "react";
+
+import { IImagesData } from "../types/type";
 
 import "./slider.style.css";
 
-const Slider = () => {
-  const dispatch = useAppDispatch();
-  const { currentIndex, images, isPags, isNavs, isLoop } = useAppSelector(
-    (state: any) => state.slider
-  );
-
+const SliderUniversal: React.FC<any> = ({ dataImage }) => {
+  const [imageArr, setImageArr] = useState<IImagesData[] | []>([]);
+  const [currentIndex, setСurrentIndex] = useState(0);
+  const [isPagsVisible, setIsPagsVisible] = useState<boolean>(true);
+  const [isNavsVisible, setIsNavsVisible] = useState<boolean>(true);
+  const [isLooping, setIsLooping] = useState<boolean>(false);
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
   const [isDelayMs, setIsDelayMs] = useState<number>(0);
 
   const handleNext = () => {
-    if (currentIndex !== images.length - 1 || isLoop) {
-      dispatch(goToNext());
+    if (currentIndex !== imageArr.length - 1 || isLooping) {
+      setСurrentIndex((prev) => (prev = (prev + 1) % imageArr.length));
     }
   };
 
   const handlePrev = () => {
-    if (currentIndex !== 0 || isLoop) {
-      dispatch(goToPrev());
+    if (currentIndex !== 0 || isLooping) {
+      setСurrentIndex((prev) => {
+        prev = (prev - 1) % imageArr.length;
+        if (prev === -1) {
+          prev = imageArr.length - 1;
+        }
+        return prev;
+      });
     }
   };
 
   const handlePageClick = (pageNumber: number) => {
-    dispatch(setCurrentPage(pageNumber));
+    setСurrentIndex((prev) => (prev = pageNumber));
   };
 
   const handlePagsVisible = () => {
-    dispatch(setPagsVisible());
+    setIsPagsVisible((prev) => (prev = !prev));
   };
 
   const handleNavsVisible = () => {
-    dispatch(setNavsVisible());
+    setIsNavsVisible((prev) => (prev = !prev));
   };
 
   const handleDelay = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsDelayMs(Number(e.target.value));
+    setIsDelayMs((prev) => (prev = Number(e.target.value)));
   };
 
   const autoPlay = useCallback(() => {
     if (isAutoPlay) {
-      dispatch(setCurrentPage((currentIndex + 1) % images.length));
+      setСurrentIndex((prev) => (prev = (prev + 1) % imageArr.length));
     }
-  }, [currentIndex, dispatch, images.length, isAutoPlay]);
+  }, [imageArr.length, isAutoPlay]);
 
   const renderPagination = () => {
-    if (!isPags) return null;
+    if (!isPagsVisible) return null;
     const paginationItems = [];
-    for (let i = 0; i < images.length; i++) {
+    for (let i = 0; i < imageArr.length; i++) {
       paginationItems.push(
         <li
           key={i}
@@ -72,6 +71,8 @@ const Slider = () => {
   };
 
   useEffect(() => {
+    setImageArr((prev) => (prev = dataImage));
+
     let ms = isDelayMs;
 
     if (isDelayMs === 0) {
@@ -81,29 +82,32 @@ const Slider = () => {
     const intervalFn = setInterval(autoPlay, ms);
 
     return () => clearInterval(intervalFn);
-  }, [autoPlay, isDelayMs]);
+  }, [autoPlay, isDelayMs, dataImage]);
 
   const handleLooping = () => {
-    dispatch(setIsLoop());
+    setIsLooping((prev) => (prev = !prev));
   };
+  if (imageArr.length === 0) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div className="slider">
-      <h1>Slider with Redux</h1>
+      <h1>Slider without Redux</h1>
       <div className="slider-div1">
-        {isNavs && <button onClick={handlePrev}>Назад</button>}
+        {isNavsVisible && <button onClick={handlePrev}>Назад</button>}
         <img
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
-          src={images[currentIndex].url}
+          src={imageArr[currentIndex].url}
           alt="slider"
         />
-        {isNavs && <button onClick={handleNext}>Далее</button>}
+        {isNavsVisible && <button onClick={handleNext}>Далее</button>}
       </div>
       <div className="slider-div2">
-        <span>"{images[currentIndex].text}"</span>
+        <span>"{imageArr[currentIndex].text}"</span>
         <span>
-          {currentIndex + 1}/{images.length}
+          {currentIndex + 1}/{imageArr.length}
         </span>
         {renderPagination()}
       </div>
@@ -111,13 +115,13 @@ const Slider = () => {
       <div className="slider-options">
         <label>
           Loop
-          <input type="checkbox" checked={isLoop} onChange={handleLooping} />
+          <input type="checkbox" checked={isLooping} onChange={handleLooping} />
         </label>
         <label>
           Show pagination
           <input
             type="checkbox"
-            checked={isPags}
+            checked={isPagsVisible}
             onChange={handlePagsVisible}
           />
         </label>
@@ -125,7 +129,7 @@ const Slider = () => {
           Show navination
           <input
             type="checkbox"
-            checked={isNavs}
+            checked={isNavsVisible}
             onChange={handleNavsVisible}
           />
         </label>
@@ -146,4 +150,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default memo(SliderUniversal);

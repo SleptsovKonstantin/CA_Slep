@@ -1,18 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export interface IImagesData {
-  id: number,
-  url: string,
-  text: string
-}
-
-export type InitialStateType = {
-  currentIndex: number,
-  images: IImagesData[],
-  isPags: boolean,
-  isNavs: boolean,
-  isLoop: boolean
-}
+import { InitialStateType} from '../types/type'
 
 const initialState: InitialStateType = {
   currentIndex: 0,

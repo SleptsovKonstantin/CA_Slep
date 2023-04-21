@@ -25,10 +25,22 @@ const resultData = [
   },
 ];
 
-const imagetData = [
-  { id: 1, url: "https://via.placeholder.com/600/92c952" },
-  { id: 2, url: "https://via.placeholder.com/600/771796" },
-  { id: 3, url: "https://via.placeholder.com/600/24f355" },
+const imagesData = [
+  {
+    id: 1,
+    url: "https://via.placeholder.com/600/92c952",
+    text: "Шедевр нереальный",
+  },
+  {
+    id: 2,
+    url: "https://via.placeholder.com/600/771796",
+    text: "Восхищение. Овации",
+  },
+  {
+    id: 3,
+    url: "https://via.placeholder.com/600/24f355",
+    text: "Малевич отдыхает",
+  },
 ]
 
 app.get('/api/getItem', (req, res) => {
@@ -38,7 +50,7 @@ app.get('/api/getItem', (req, res) => {
 
 app.get('/api/getImages', (req, res) => {
   console.log('/api/getItem');
-  res.send(imagetData)
+  res.send(imagesData)
 });
 
 // app.get('/api/getImages', (req, res) => {
