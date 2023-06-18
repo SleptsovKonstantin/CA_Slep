@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require("cors");
 const app = express();
+
 const path = require('path');
 const fs = require('fs');
 
@@ -25,6 +26,7 @@ const resultData = [
   },
 ];
 
+
 const imagesData = [
   {
     id: 1,
@@ -43,10 +45,12 @@ const imagesData = [
   },
 ]
 
+
 app.get('/api/getItem', (req, res) => {
   console.log('/api/getItem');
   setTimeout(() => res.send(resultData), 3000)
 });
+
 
 app.get('/api/getImages', (req, res) => {
   console.log('/api/getItem');
@@ -86,7 +90,6 @@ app.get('/api/getImages', (req, res) => {
 //   });
 // });
 
-
 app.post('/api/addItem', (req, res) => {
   console.log('/api/addItem');
   resultData.push(req.body)
@@ -95,7 +98,9 @@ app.post('/api/addItem', (req, res) => {
 
 app.patch('/api/updateItem', (req, res) => {
   console.log('/api/updateItem', req.body);
-  const { id, text } = req.body
+
+  const {id, text } = req.body
+
   const index = resultData.findIndex(el => el.id === id);
   resultData[index].item = text
   setTimeout(() => res.send(resultData), 3000)
@@ -109,7 +114,9 @@ app.delete('/api/deleteItem', (req, res) => {
   setTimeout(() => res.send(resultData), 3000)
 })
 
+
 const port = 4000;
 const server = app.listen(port, () => console.log(`Сервер запущен на порту ${port}`));
 
 server.timeout = 30000
+
