@@ -90,6 +90,7 @@ app.get('/api/getImages', (req, res) => {
 //   });
 // });
 
+
 app.post('/api/addItem', (req, res) => {
   console.log('/api/addItem');
   resultData.push(req.body)
@@ -99,7 +100,10 @@ app.post('/api/addItem', (req, res) => {
 app.patch('/api/updateItem', (req, res) => {
   console.log('/api/updateItem', req.body);
 
-  const {id, text } = req.body
+  const { id, text } = req.body
+
+
+
 
   const index = resultData.findIndex(el => el.id === id);
   resultData[index].item = text
@@ -119,4 +123,5 @@ const port = 4000;
 const server = app.listen(port, () => console.log(`Сервер запущен на порту ${port}`));
 
 server.timeout = 30000
+
 
