@@ -1,0 +1,39 @@
+{
+  "ROLE": {
+    "ADMIN": "Admin",
+    "CANDIDATE": "Candidate",
+    "TEAMLEAD": "Team leader",
+    "DEVELOPER": "Developer",
+    "HRMANAGER": "HR manager",
+    "SALESMANAGER": "Sales manager",
+    "INTERN": "Intern",
+    "NONE": "Without any permissions"
+  },
+  "STATUS_CODE": {
+    "BAD_REQUEST": 400,
+    "NOT_FOUND": 404,
+    "UNAUTHORIZED": 401,
+    "FORBIDDEN": 403,
+    "CONFLICT": 409,
+    "SUCCESS": 200,
+    "SERVER_ERROR": 500,
+    "NOT_IMPLEMENTED": 501
+  },
+  "NOTIFY_TYPES": {
+    "ERROR": "error",
+    "SUCCESS": "success",
+    "WARNING": "warning",
+    "INFO": "info",
+    "NOTIFY": "notify"
+  },
+  "DEFAULT_MESSAGES": {
+    "400": "Invalid data sent",
+    "404": "Not found",
+    "401": "Unauthorized. Please, login again",
+    "403": "You do not have permissions for this action",
+    "200": "Success",
+    "500": "Something went wrong, server error",
+    "501": "Not implemented"
+  },
+  "NON_PURE_COSTS": ["Техника", "Корпоративы"]
+}

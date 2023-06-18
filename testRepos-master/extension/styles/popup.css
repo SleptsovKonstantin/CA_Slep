@@ -1,0 +1,123 @@
+body {
+  min-width: 200px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+}
+
+body .container {
+  padding: 10px 0;
+}
+
+.login-block{
+  display: flex;
+  flex-direction: column;
+}
+.login-block input{
+  display: flex;
+  flex: 1;
+  margin: 10px;
+  border: none;
+  border-bottom: 2px solid #444;
+  font-size: 14px;
+  padding: 5px;
+  outline: none;
+}
+.login-block input:focus{
+  border-color: deepskyblue;
+}
+
+.login-block label{
+  display: flex;
+  flex: 1;
+  color: #333;
+}
+
+#markAsCandidateBtn{
+  margin: 5px;
+  padding: 5px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+}
+#markAsCandidateBtn:active{
+  opacity: .4;
+}
+#markAsCandidateBtn{
+  margin: 10px 0;
+}
+input[type="checkbox"], input[type="date"]{
+  margin: 5px 0;
+}
+input[type="date"] + label, input[type="datetime-local"] + label{
+  position: relative;
+  top: -45px;
+}
+input[type="checkbox"] + label{
+  display: inline-block;
+  position: relative;
+  margin-top: -20px;
+  margin-bottom: 10px;
+  left: 20px;
+}
+
+.hide-element, .hide-element + label {
+  display: none!important;
+}
+#loggedBlock h2{
+    color: green;
+  margin-top: 0;
+  font-size: 11px;
+}
+#hrName{
+  font-size: 18px;
+  font-family: bold;
+  color: #1554d4;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+
+#signIn{
+  background-color: #1554d4;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  opacity: .8;
+}
+#signIn:hover{
+  opacity: 1;
+}
+
+#candidateName:before{
+  content: 'Кандидат';
+  width: 100%;
+  display: block;
+}
+#candidateName{
+  font-weight: bold;
+  padding: 5px 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header{
+  text-align: center;
+  font-size: 25px;
+  color: #1554d4;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+#signOut{
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#loggedBlock{
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+}

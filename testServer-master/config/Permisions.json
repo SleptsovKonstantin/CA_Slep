@@ -1,0 +1,9 @@
+{
+  "FULL": 1,
+  "GLOBAL": {
+    "RECRUITING": 1,
+    "TEAM": 2,
+    "RECRUITING_REPORTS": 4,
+    "RECRUITING_APPLICATIONS_OWN": 8
+  }
+}

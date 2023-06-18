@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= htmlWebpackPlugin.options.title || 'Exceed CRM Recruiting' %></title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta property="og:title" content="Exceed Team CRM" />
+    <meta property="og:url" content="https://exceed-team.com/" />
+    <meta
+      property="og:description"
+      content="Human resources department of the Exceed Team"
+    />
+    <meta
+      property="og:image"
+      content=""
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#19354d" />
+    <meta name="apple-mobile-web-app-title" content="EXCEED CRM" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#19354d" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/media/meta-icons/favicon.ico" />
+    <script src="/vNotify.js"></script>
+    <link rel="stylesheet" href="/vNotify.css">
+  </head>
+  <body>
+
+    <div id="root" style="min-height: 100vh; display: flex;">
+      <div class="FirstLoaderContainer">
+        <div class="FirstLoader">
+          <div class="FirstLoader-textTitle">
+            <span>EXCEED</span> <span>TEAM</span></div>
+          <div class="FirstLoader-text">RECRUITING</div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .FirstLoaderContainer{
+        display: flex;
+        align-self: center;
+        flex: 1;
+      }
+      .FirstLoader{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .FirstLoader-text{
+        color: #4e4e4e;
+        font-size: 29px;
+        font-weight: bold;
+        background: #ffffff;
+        text-transform: capitalize;
+      }
+      .FirstLoader-textTitle{
+        margin: auto;
+        font-size: 5rem;
+        font-weight: bold;
+        color: #4e4e4e;
+      }
+
+      .FirstLoader-textTitle span:last-child{
+        color: #065be9;
+      }
+
+      .FirstLoader:before {
+        content: '';
+        position: absolute;
+        filter: blur(10px);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: screen;
+        z-index: 50;
+        background-image: repeating-linear-gradient(-45deg, transparent, transparent 1em, #fcfcfc 1em, #337ab700 50%);
+        background-size: 3em 3em, 2em 2em;
+        animation-name: ani;
+        animation-duration: 10s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      @keyframes ani {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 100% 0;
+        }
+      }
+      @keyframes firstLoad {
+        0%   {
+          width: 0;
+          opacity: 0;
+        }
+        70%{
+          opacity: 1;
+        }
+        100% {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+
+    </style>
+    <% if (htmlWebpackPlugin.options.window) { %>
+    <script>
+      <% for (var varName in htmlWebpackPlugin.options.window) { %>
+        window['<%= varName %>'] = <%= JSON.stringify(htmlWebpackPlugin.options.window[varName]) %>;
+        <% } %>
+    </script>
+    <% } %> <% if (htmlWebpackPlugin.options.googleAnalytics) { %>
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      <% if (htmlWebpackPlugin.options.googleAnalytics.trackingId) { %>
+        ga('create', '<%= htmlWebpackPlugin.options.googleAnalytics.trackingId %>', 'auto');
+        <% } else {
+          throw new Error("html-webpack-template requires googleAnalytics.trackingId config");
+        } %>
+
+        <% if (htmlWebpackPlugin.options.googleAnalytics.pageViewOnLoad) { %>
+          ga('send', 'pageview');
+          <% } %>
+    </script>
+    <% } %>
+    <noscript>
+      <div
+        style="align-items: center; display: flex; font-size: 30px; justify-content: center; min-height: 100vh;"
+      >
+        This website need Javascript. Please turn it on.
+      </div>
+    </noscript>
+  </body>
+</html>
