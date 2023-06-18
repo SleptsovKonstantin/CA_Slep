@@ -1,0 +1,29 @@
+{
+  "short_name": "Exceed Team Recruiting",
+  "name": "Exceed Team Recruiting CRM",
+  "icons": [
+    {
+      "src": "media/meta-icons/favicon.ico",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "media/meta-icons/favicon.ico",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "media/meta-icons/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "media/meta-icons/favicon.ico",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./?utm_source=web_app",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
