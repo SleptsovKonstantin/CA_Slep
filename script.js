@@ -1,3 +1,4 @@
+
 // # Условие задачи
 // ​
 // Необходимо написать функцию `filterProductsByCategoryAndPrice`, которая будет принимать на вход массив объектов `products`, а также два аргумента: `category` (строка) и `priceRange` (массив из двух чисел - минимальная и максимальная цена).
@@ -160,3 +161,4 @@ const filterProductsByCategoryAndPrice = (prod, categ, pr) => {
 
 const filteredProducts = filterProductsByCategoryAndPrice(products, 'электроника', [10000, 50000]);
 console.log(filteredProducts);
+
